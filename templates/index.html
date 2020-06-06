@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fucking TEST</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <style>
+        .space_bt{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="mh-100">
+    <div class="row h-100">
+        <div class="col-lg-4 col-md-4" style="background: lightblue;">
+            <div>
+                <input type="text" id="new_room" placeholder="Type here..." autocomplete="off"> 
+                <button type="button" id="send_newRoom">SEND</button>
+            </div>
+            <H3>ROOMS</H3>
+            <ul id="rooms">
+                {% for room in rooms %}
+                    <li class="select-room">{{ room|title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-lg-8 col-md-8 space_bt">
+            <div id="display-message-section">
+
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="user_message" placeholder="Type here..." autocomplete="off"> 
+                <button type="button" id="send_message">SEND</button>
+            </div>
+        </div>
+        
+
+<!-- ################################ SUPER IMPORTANT  
+<div class="col-lg-6 col-md-6" style="background: gray;">
+            <div id="display-message-section2">
+                
+            </div>
+
+            <div class="input-area2">
+                <input type="text" id="user_message2" placeholder="Type here..." autocomplete="off"> 
+                <button type="button" id="send_message2">SEND</button>
+            </div>
+        </div>
+####################################### END OF SUPER IMPORTANT -->
+        
+</div>
+
+</body>
+</html>
