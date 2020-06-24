@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VChat Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row align-items-center justify-content-center w-100 vh-100">
+        <div class="p-4 rounded shadow-lg hoverable" >
+            <h2 class="special-font text-center" style="font-size: 56px; font-weight: bold; color: initial;"> Welcome </h2>
+            <br>
+            <div class="text-sm-center mb-5"> <!-- Logo -->
+                <img src="{{url_for('static', filename='logo.png')}}" class=" w-25"alt="Logo">
+            </div>
+
+            <form action="/signin" method="POST">
+                <div class="d-flex"><!-- Login Field -->
+
+                    <input class="form-control" type="text" name="username" placeholder="Username" required> <!-- Username input -->
+        
+                    <button class="btn btn-primary" type="submit"> <!-- Login button -->
+                        Login
+                    </button>
+
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
