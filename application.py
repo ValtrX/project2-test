@@ -42,7 +42,7 @@ def signin():
 
         # if username in usersLogged:
         #   return render_template("error.html", message="that username already exists!")                   
-        
+
         usersLogged.append(username)
 
         session['username'] = username
@@ -59,6 +59,7 @@ def signin():
 @socketio.on('message')
 def message(data):
     msg = data["msg"]
+    print(msg)
     room = data["room"]
     current_user = session.get('username')
     print(session.get('username'))
@@ -95,6 +96,16 @@ def new_room(data):
     join_room(room)
     emit('new room received', data, broadcast=True)
 
+@socketio.on('connect')
+def test_connect():
+    print('Client connected')
+    send({"msg": "someone connected"}, broadcast=True)
+
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')
+    username = session['username']
+    send({"msg": username + " has left the chat "}, broadcast=True)
 
 ###############################  SUPER IMPORTANT ##################
 

@@ -3,14 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let room  = "room1"
     joinRoom("room1");
 
-    // socket.on('connect', () => { // Predefined socket event called "Connect"
-      //  socket.send("I am connected");
-    //});
+    socket.on('connect', function() {
+        console.log("Got connected");
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+
+    socket.on('disconnect', function() {
+        socket.send('user has disconnected');
+    });
 
 
     //Sending messages 
     document.querySelector('#send_message').onclick = () => {
-        socket.send({'msg': document.querySelector('#user_message').value, 'room': room, 'username': username });
+        socket.send({'msg': document.querySelector('#user_message').value, 'room': room, 'username': username});
 
         document.querySelector('#user_message').value='';
     }
